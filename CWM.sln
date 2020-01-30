@@ -8,6 +8,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "CWMFrontOffice", "CWMFrontOffice\", "{354DEA95-3508-4C69-9ADE-31B369514194}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
+		ProjectReferences = "{0db58cce-7379-4f90-b328-1b9c77f01df2}|CWMClasses.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_51626"
 		Debug.AspNetCompiler.PhysicalPath = "CWMFrontOffice\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_51626\"
@@ -23,6 +24,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "CWMFrontOffice", "CWMFrontO
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "51626"
+		SlnRelativePath = "CWMFrontOffice\"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
