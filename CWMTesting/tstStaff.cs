@@ -1,4 +1,5 @@
 ﻿using System;
+using CWMClasses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CWMTesting
