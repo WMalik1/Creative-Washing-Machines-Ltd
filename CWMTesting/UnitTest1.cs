@@ -4,13 +4,11 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CWMTesting
 {
     [TestClass]
-    public class tstStaff
+    public class UnitTest1
     {
         [TestMethod]
-        public void InstanceOk()
+        public void TestMethod1()
         {
-            clsAddress AnAddress = new clsAddress();
-            Assert.IsNotNull(AnAddress);
         }
     }
 }
