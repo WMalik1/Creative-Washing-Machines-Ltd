@@ -76,5 +76,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CWMClasses\CWMClasses.csproj">
+      <Project>{0db58cce-7379-4f90-b328-1b9c77f01df2}</Project>
+      <Name>CWMClasses</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
