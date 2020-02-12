@@ -52,7 +52,7 @@
     <Compile Include="clsAddress.cs" />
     <Compile Include="TSTReview.cs" />
     <Compile Include="tstStaff.cs" />
-    <Compile Include="tstCustomer.cs" />
+    <Compile Include="TstCustomer.cs" />
     <Compile Include="tstStock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

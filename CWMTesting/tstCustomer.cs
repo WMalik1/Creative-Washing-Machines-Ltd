@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CWMTesting
 {
     [TestClass]
-    public class tstCustomer
+    public class TstCustomer
     {
         [TestMethod]
         public void InstanceOK()
@@ -15,7 +15,7 @@ namespace CWMTesting
         }
 
         [TestMethod]
-        public void customer_idOK()
+        public void Customer_idOK()
         {
             clsCustomer customer = new clsCustomer();
             Int32 testData = 1;
@@ -24,7 +24,7 @@ namespace CWMTesting
         }
 
         [TestMethod]
-        public void nameOK()
+        public void NameOK()
         {
             clsCustomer customer = new clsCustomer();
             string testData = "Hi";
@@ -34,7 +34,7 @@ namespace CWMTesting
 
 
         [TestMethod]
-        public void addressOK()
+        public void AddressOK()
         {
             clsCustomer customer = new clsCustomer();
             string testData = "15 MadeUp Street, ImaginationVille";
@@ -43,7 +43,7 @@ namespace CWMTesting
         }
 
         [TestMethod]
-        public void emailOK()
+        public void EmailOK()
         {
             clsCustomer customer = new clsCustomer();
             string testData = "a@a.com";
@@ -52,7 +52,7 @@ namespace CWMTesting
         }
 
         [TestMethod]
-        public void passwordOK()
+        public void PasswordOK()
         {
             clsCustomer customer = new clsCustomer();
             string testData = "password";
@@ -61,7 +61,7 @@ namespace CWMTesting
         }
 
         [TestMethod]
-        public void marketing_emailsOK()
+        public void Marketing_emailsOK()
         {
             clsCustomer customer = new clsCustomer();
             bool testData = true;
@@ -70,7 +70,7 @@ namespace CWMTesting
         }
 
         [TestMethod]
-        public void registration_dateOK()
+        public void Registration_dateOK()
         {
             clsCustomer customer = new clsCustomer();
             DateTime testData = DateTime.Now.Date;
