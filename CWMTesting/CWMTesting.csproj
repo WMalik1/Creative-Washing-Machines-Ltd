@@ -49,6 +49,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="tstOrder.cs" />
     <Compile Include="TSTReview.cs" />
     <Compile Include="tstStaff.cs" />
     <Compile Include="TstCustomer.cs" />
