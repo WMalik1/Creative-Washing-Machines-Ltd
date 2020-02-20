@@ -4,13 +4,98 @@ namespace CWMClasses
 {
     public class clsCustomer
     {
-        public int customer_id { get; set; }
-        public string name { get; set; }
-        public string address { get; set; }
-        public string email { get; set; }
-        public string password { get; set; }
-        public bool marketing_emails { get; set; }
-        public DateTime registration_date { get; set; }
+        private Int32 mCustomer_id;
+        public int Customer_id
+        { 
+            get
+            {
+                return mCustomer_id;
+            }
+            set
+            {
+                mCustomer_id = value;
+            }
+        }
+
+        private string mName;
+        public string Name
+        {
+            get 
+            {
+                return mName;
+            }
+            set 
+            {
+                mName = value;
+            }
+        }
+
+        private string mAddress;
+        public string Address
+        {
+            get
+            {
+                return mAddress;
+            }
+            set
+            {
+                mAddress = value;
+            }
+        }
+
+        private string mEmail;
+        public string Email
+        {
+            get
+            {
+                return mEmail;
+            }
+            set
+            {
+                mEmail = value;
+            }
+        }
+
+        private string mPassword;
+        public string Password
+        {
+            get
+            {
+                return mPassword;
+            }
+            set
+            {
+                mPassword = value;
+            }
+        }
+
+        private Boolean mMarketing_emails;
+        public bool Marketing_emails
+        {
+            get
+            {
+                return mMarketing_emails;
+            }
+            set
+            {
+                mMarketing_emails = value;
+            }
+        }
+
+        private DateTime mRegistration_date;
+        public DateTime Registration_date
+        {
+            get
+            {
+                return mRegistration_date;
+            }
+            set
+            {
+                mRegistration_date = value;
+            }
+        }
+
+
 
     }
 }

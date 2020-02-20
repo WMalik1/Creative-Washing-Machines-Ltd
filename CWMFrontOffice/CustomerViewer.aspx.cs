@@ -13,11 +13,11 @@ public partial class CustomerViewer : System.Web.UI.Page
     {
         clsCustomer ACustomer = new clsCustomer();
         ACustomer = (clsCustomer)Session["ACustomer"];
-        Response.Write(ACustomer.name + "<br />");
-        Response.Write(ACustomer.address + "<br />");
-        Response.Write(ACustomer.email + "<br />");
-        Response.Write(ACustomer.password + "<br />");
-        Response.Write(ACustomer.marketing_emails + "<br />");
-        Response.Write(ACustomer.registration_date.ToShortDateString());
+        Response.Write(ACustomer.Name + "<br />");
+        Response.Write(ACustomer.Address + "<br />");
+        Response.Write(ACustomer.Email + "<br />");
+        Response.Write(ACustomer.Password + "<br />");
+        Response.Write(ACustomer.Marketing_emails + "<br />");
+        Response.Write(ACustomer.Registration_date.ToShortDateString());
     }
 }

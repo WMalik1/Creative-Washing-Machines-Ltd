@@ -18,12 +18,12 @@ public partial class ACustomer : System.Web.UI.Page
         clsCustomer ACustomer = new clsCustomer();
 
         //collect customer name
-        string customerName = nameText.Text.Trim().Replace(' ', ',');
-        ACustomer.name = customerName;
+        string customerName = txtName.Text.Trim().Replace(' ', ',');
+        ACustomer.Name = customerName;
 
         //collect customer address
         string customerAddress = "";
-        string[] customerAddressLines = addressText.Text.Trim().Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+        string[] customerAddressLines = txtAddress.Text.Trim().Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
         string lastLine = customerAddressLines.Last();
 
         foreach(string line in customerAddressLines) {
@@ -35,19 +35,19 @@ public partial class ACustomer : System.Web.UI.Page
                 customerAddress += line + ',';
             }
         }
-        ACustomer.address = customerAddress;
+        ACustomer.Address = customerAddress;
 
         //collect customer email
-        ACustomer.email = emailText.Text.Trim();
+        ACustomer.Email = txtEmail.Text.Trim();
 
         //collect customer password
-        ACustomer.password = passwordText.Text.Trim();
+        ACustomer.Password = txtPassword.Text.Trim();
 
         //collect marketing emails preference
-        ACustomer.marketing_emails = marketingEmailsCheck.Checked;
+        ACustomer.Marketing_emails = checkMarketingEmails.Checked;
 
         //customer registration date
-        ACustomer.registration_date = System.DateTime.Now.Date;
+        ACustomer.Registration_date = System.DateTime.Now.Date;
             
         Session["ACustomer"] = ACustomer;
         Response.Redirect("CustomerViewer.aspx");
