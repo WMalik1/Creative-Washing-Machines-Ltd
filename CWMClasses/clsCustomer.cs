@@ -97,15 +97,25 @@ namespace CWMClasses
 
         public bool Find(int Customer_id)
         {
-            mCustomer_id = 1;
-            mName = "Joe,Bloggs";
-            mAddress = "2 Random Street,RandomTown,RandomCounty,RN27FT";
-            mEmail = "random.email@email.co.uk";
-            mPassword = "password";
-            mMarketing_emails = false;
-            mRegistration_date = DateTime.Now.Date;
+            Boolean Found = false;
+            
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@customer_id", Customer_id);
+            DB.Execute("");
 
-            return true;
+            if (DB.Count == 1)
+            {
+                mCustomer_id = Convert.ToInt32(DB.DataTable.Rows[0]["customer_id"]);
+                mName = Convert.ToString(DB.DataTable.Rows[0]["name"]);
+                mAddress = Convert.ToString(DB.DataTable.Rows[0]["address"]);
+                mEmail = Convert.ToString(DB.DataTable.Rows[0]["email"]);
+                mPassword = Convert.ToString(DB.DataTable.Rows[0]["password"]); ;
+                mMarketing_emails = Convert.ToBoolean(DB.DataTable.Rows[0]["marketing_emails"]);
+                mRegistration_date = Convert.ToDateTime(DB.DataTable.Rows[0]["registration_date"]);
+                Found = true;
+            }
+
+            return Found;
         }
 
     }

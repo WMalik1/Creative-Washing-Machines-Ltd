@@ -8,11 +8,16 @@
     </head>
     <body>
         <form id="form1" runat="server">
+            <asp:Label ID="lblCustomerID" runat="server" AssociatedControlID="txtCustomerID" Text="Customer ID"></asp:Label>
+            <br />
+            <asp:TextBox ID="txtCustomerID" runat="server"></asp:TextBox>
+            <asp:Button ID ="btnFind" runat="server" text="Find" OnClick="btnFind_Click"/>
+            <br />
             <asp:Label ID="lblName" runat="server" AssociatedControlID="txtName" Text="Name"></asp:Label>
             <br />
             <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
             <br />
-            <asp:Label ID="lblAddress" runat="server" AssociatedControlID="txtAdress" Text="Address (Each address line on a new line)"></asp:Label>
+            <asp:Label ID="lblAddress" runat="server" AssociatedControlID="txtAddress" Text="Address (Each address line on a new line)"></asp:Label>
             <br />
             <asp:TextBox ID="txtAddress" runat="server" TextMode="MultiLine" Width="245px"></asp:TextBox>
             <br />
@@ -25,11 +30,13 @@
             <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
             <br />
             <asp:CheckBox ID="checkMarketingEmails" runat="server" Text="Marketing Emails?" />
-        
+            <br />
+            <asp:Label ID="lblRegistrationDate" runat="server" AssociatedControlID="txtRegistrationDate" Text="Registration Date"></asp:Label>
+            <br />
+            <asp:TextBox ID="txtRegistrationDate" runat="server" TextMode="Date"></asp:TextBox>
             <br />
             <asp:Button ID="btnOK" runat="server" Text="OK" OnClick="btnOK_Click" />
             <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
-        
         </form>
     </body>
 </html>
