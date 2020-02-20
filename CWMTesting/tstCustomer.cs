@@ -78,5 +78,134 @@ namespace CWMTesting
             Assert.AreEqual(customer.Registration_date, testData);
         }
 
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            Boolean Found = false;
+            Int32 Customer_id = 1;
+            Found = ACustomer.Find(Customer_id);
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestCustomerIDFound()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 Customer_id = 1;
+            Found = ACustomer.Find(Customer_id);
+
+            if (ACustomer.Customer_id != 1)
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestNameFound()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 Customer_id = 1;
+            Found = ACustomer.Find(Customer_id);
+
+            if (ACustomer.Name != "Joe,Bloggs")
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestAddressFound()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 Customer_id = 1;
+            Found = ACustomer.Find(Customer_id);
+
+            if (ACustomer.Address != "2 Random Street,RandomTown,RandomCounty,RN27FT")
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestEmailFound()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 Customer_id = 1;
+            Found = ACustomer.Find(Customer_id);
+
+            if (ACustomer.Email != "random.email@email.co.uk")
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestPasswordFound()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 Customer_id = 1;
+            Found = ACustomer.Find(Customer_id);
+
+            if (ACustomer.Password != "password")
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestMarketingEmailsFound()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 Customer_id = 1;
+            Found = ACustomer.Find(Customer_id);
+
+            if (ACustomer.Marketing_emails != false)
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestRegistrationDateFound()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 Customer_id = 1;
+            Found = ACustomer.Find(Customer_id);
+
+            if (ACustomer.Registration_date != DateTime.Now.Date)
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
     }
 }

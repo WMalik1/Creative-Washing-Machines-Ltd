@@ -95,7 +95,18 @@ namespace CWMClasses
             }
         }
 
+        public bool Find(int Customer_id)
+        {
+            mCustomer_id = 1;
+            mName = "Joe,Bloggs";
+            mAddress = "2 Random Street,RandomTown,RandomCounty,RN27FT";
+            mEmail = "random.email@email.co.uk";
+            mPassword = "password";
+            mMarketing_emails = false;
+            mRegistration_date = DateTime.Now.Date;
 
+            return true;
+        }
 
     }
 }
