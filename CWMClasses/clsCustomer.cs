@@ -101,7 +101,7 @@ namespace CWMClasses
             
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@customer_id", Customer_id);
-            DB.Execute("");
+            DB.Execute("sproc_customer_FilterByCustomerID");
 
             if (DB.Count == 1)
             {
@@ -109,7 +109,7 @@ namespace CWMClasses
                 mName = Convert.ToString(DB.DataTable.Rows[0]["name"]);
                 mAddress = Convert.ToString(DB.DataTable.Rows[0]["address"]);
                 mEmail = Convert.ToString(DB.DataTable.Rows[0]["email"]);
-                mPassword = Convert.ToString(DB.DataTable.Rows[0]["password"]); ;
+                mPassword = Convert.ToString(DB.DataTable.Rows[0]["password"]);
                 mMarketing_emails = Convert.ToBoolean(DB.DataTable.Rows[0]["marketing_emails"]);
                 mRegistration_date = Convert.ToDateTime(DB.DataTable.Rows[0]["registration_date"]);
                 Found = true;
