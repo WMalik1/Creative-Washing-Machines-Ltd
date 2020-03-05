@@ -12,27 +12,31 @@
         }
     </style>
 </head>
-<body style="height: 276px; width: 359px">
+<body style="height: 325px; width: 359px">
     <form id="form1" runat="server">
+        
+        <asp:Label ID="lblProductCode" runat="server" Text="Product Code:"></asp:Label>
+        <br />
+        <asp:TextBox ID="txtProductCode" runat="server"></asp:TextBox><asp:Button ID="btnFind" runat="server" Text="Find" OnClick="btnFind_Click" />
+        <br />
 
-        <asp:Label ID="Description" runat="server" Text="Item Description: "></asp:Label>
+        <asp:Label ID="lblDescription" runat="server" Text="Item Description: "></asp:Label>
         <br />
-        <asp:TextBox ID="DescriptionText" runat="server" TextMode="MultiLine" Width="325px" Height="34px"></asp:TextBox>
+        <asp:TextBox ID="txtDescription" runat="server" TextMode="MultiLine" Width="325px" Height="34px"></asp:TextBox>
         <br />
-        <asp:Label ID="Price" runat="server" Text="Price: "></asp:Label><asp:TextBox ID="PriceValue" runat="server"></asp:TextBox>
+        <asp:Label ID="lblPrice" runat="server" Text="Price: "></asp:Label><asp:TextBox ID="txtPrice" runat="server"></asp:TextBox>
         <br />
-        <asp:Label ID="IntakeDateText" runat="server" Text="Next Intake Date: "></asp:Label><asp:TextBox ID="IntakeDate" runat="server"></asp:TextBox>
+        <asp:Label ID="lblIntakeDateText" runat="server" Text="Next Intake Date: "></asp:Label><asp:TextBox ID="txtNext_Intake" runat="server"></asp:TextBox>
         <br />
-        <asp:CheckBox ID="Pristine" runat="server" Text="Pristine?" />
+        <asp:Label ID="lblPristine" runat="server" Text="Pristine: "></asp:Label>
+        <asp:TextBox ID="txtPristine" runat="server"></asp:TextBox>
         <br />
-        <asp:CheckBox ID="NonPristine" runat="server" Text="Non-Pristine?" />
+        <asp:Label ID="lblNon_Pristine" runat="server" Text="Non-Pristine?"></asp:Label>
+        <asp:TextBox ID="txtNon_Pristine" runat="server"></asp:TextBox>
         <br />
-        <asp:CheckBox ID="Clearence" runat="server" Text="Clearence?" />
+        <asp:Label ID="lblClearence" runat="server" Text="Clearence? "></asp:Label>
+        <asp:TextBox ID="txtClearence" runat="server"></asp:TextBox>
         <br />
-        <asp:Button ID="btnOK" runat="server" Text="OK" OnClick="btnOK_Click"/>
-        <asp:Button ID="btnClear" runat="server" Text="Clear" />
-        <br />
-        <asp:Button ID="Cancel" runat="server" Text="Cancel" />
 
 
     </form>

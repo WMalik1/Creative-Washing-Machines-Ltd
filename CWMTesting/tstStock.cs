@@ -76,6 +76,126 @@ namespace CWMTesting
             stock.Next_Intake = testData;
             Assert.AreEqual(stock.Next_Intake, testData);
         }
+
+        //-----------------------------------------------------
+
+        [TestMethod]
+        public void FindMethodOf()
+        {
+            clsStock stock = new clsStock();
+            Boolean Found = false;
+            Int32 ProductCode = 21;
+            Found = stock.Find(ProductCode);
+
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestStockNotFound()
+        {
+            clsStock stock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 Product_Code = 21;
+            Found = stock.Find(Product_Code);
+            if (stock.Product_Code != 21)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestDescriptionNotFound()
+        {
+            clsStock stock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 Product_Code = 21;
+            Found = stock.Find(Product_Code);
+            if ((String) stock.Description != "Samsung Series 4")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void PriceNotFound()
+        {
+            clsStock stock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 Product_Code = 21;
+            Found = stock.Find(Product_Code);
+            if (stock.Price != 1299.99)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void PristineNotFound()
+        {
+            clsStock stock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 Product_Code = 21;
+            Found = stock.Find(Product_Code);
+            if (stock.Pristine != 12)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void Non_PristineNotFound()
+        {
+            clsStock stock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 Product_Code = 21;
+            Found = stock.Find(Product_Code);
+            if (stock.Non_Pristine != 15)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void ClearenceNotFound()
+        {
+            clsStock stock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 Product_Code = 21;
+            Found = stock.Find(Product_Code);
+            if (stock.Clearence != true)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void Next_IntakeNotFound()
+        {
+            clsStock stock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 Product_Code = 21;
+            Found = stock.Find(Product_Code);
+            if (stock.Next_Intake != DateTime.Now.Date)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+
     }
 
 }
