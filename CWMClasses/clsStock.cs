@@ -94,7 +94,7 @@ namespace CWMClasses
         public bool Find(int Product_Code)
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@Product_Code", Product_Code);
+            DB.AddParameter("@ProductCode", Product_Code);
             DB.Execute("sproc_Stock_FilterByProductCode");
             if (DB.Count == 1)
             {

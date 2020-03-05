@@ -84,7 +84,7 @@ namespace CWMTesting
         {
             clsStock stock = new clsStock();
             Boolean Found = false;
-            Int32 ProductCode = 21;
+            Int32 ProductCode = 23;
             Found = stock.Find(ProductCode);
 
             Assert.IsTrue(Found);
@@ -96,9 +96,9 @@ namespace CWMTesting
             clsStock stock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 Product_Code = 21;
+            Int32 Product_Code = 23;
             Found = stock.Find(Product_Code);
-            if (stock.Product_Code != 21)
+            if (stock.Product_Code != 23)
             {
                 OK = false;
             }
@@ -111,9 +111,9 @@ namespace CWMTesting
             clsStock stock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 Product_Code = 21;
+            Int32 Product_Code = 23;
             Found = stock.Find(Product_Code);
-            if ((String) stock.Description != "Samsung Series 4")
+            if ((String) stock.Description != "Example")
             {
                 OK = false;
             }
@@ -126,9 +126,9 @@ namespace CWMTesting
             clsStock stock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 Product_Code = 21;
+            Int32 Product_Code = 23;
             Found = stock.Find(Product_Code);
-            if (stock.Price != 1299.99)
+            if (stock.Price != 9999.99)
             {
                 OK = false;
             }
@@ -141,9 +141,9 @@ namespace CWMTesting
             clsStock stock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 Product_Code = 21;
+            Int32 Product_Code = 23;
             Found = stock.Find(Product_Code);
-            if (stock.Pristine != 12)
+            if (stock.Pristine != 13)
             {
                 OK = false;
             }
@@ -156,7 +156,7 @@ namespace CWMTesting
             clsStock stock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 Product_Code = 21;
+            Int32 Product_Code = 23;
             Found = stock.Find(Product_Code);
             if (stock.Non_Pristine != 15)
             {
@@ -171,7 +171,7 @@ namespace CWMTesting
             clsStock stock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 Product_Code = 21;
+            Int32 Product_Code = 23;
             Found = stock.Find(Product_Code);
             if (stock.Clearence != true)
             {
@@ -186,9 +186,9 @@ namespace CWMTesting
             clsStock stock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 Product_Code = 21;
+            Int32 Product_Code = 23;
             Found = stock.Find(Product_Code);
-            if (stock.Next_Intake != DateTime.Now.Date)
+            if (stock.Next_Intake.Equals("20/02/2020"))
             {
                 OK = false;
             }
