@@ -38,7 +38,7 @@ namespace CWMTesting
             clsOrder AnOrder = new clsOrder();
             Int32 testData = 1;
             AnOrder.staffID = testData;
-            Assert.AreEqual(AnOrder.customerID, testData);
+            Assert.AreEqual(AnOrder.staffID, testData);
         }
         
         [TestMethod]
@@ -66,7 +66,43 @@ namespace CWMTesting
             DateTime testData = System.DateTime.Now.Date;
             AnOrder.Date_delivery = testData;
             Assert.AreEqual(AnOrder.Date_delivery, testData);
+        }
 
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //boolean variable to store the result of the validation
+            Boolean Found = false;
+            //create some test data to use with the method
+            Int32 OrderID = 1;
+            //invoke the method
+            Found = AnOrder.Find(OrderID);
+            //test to see that the result is correct
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestOrderNoFound()
+        {
+            //creat an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 OrderID = 21;
+            //invoke the method
+            Found = AnOrder.Find(OrderID);
+            //check the OrderID
+            if (AnOrder.OrderID != 21)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
         }
     }
 }

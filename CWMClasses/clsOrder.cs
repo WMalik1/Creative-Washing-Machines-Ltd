@@ -1,4 +1,6 @@
-﻿namespace CWMClasses
+﻿using System;
+
+namespace CWMClasses
 {
     public class clsOrder
     {
@@ -13,5 +15,11 @@
         public int Total_cost { get; set; }
 
         public System.DateTime Date_delivery { get; set; }
+
+        public bool Find(int OrderID)
+        {
+            //always return true
+            return true;
+        }
     }
 }
