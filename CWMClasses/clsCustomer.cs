@@ -132,6 +132,17 @@ namespace CWMClasses
         public string ValidateName(string name)
         {
             String Error = "";
+            //regex to be used later to get rid of symbols error regexItem = new Regex("^[a-zA-Z,]*$");
+
+            if (name.Length <= 1)
+            {
+                Error = "Name should have at least 2 characters.";
+            }
+
+            if (name.Length > 50)
+            {
+                Error = "Name, including space cannot be longer than 50 characters";
+            }
 
             return Error;
         }

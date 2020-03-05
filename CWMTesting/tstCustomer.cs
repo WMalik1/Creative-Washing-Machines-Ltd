@@ -39,7 +39,6 @@ namespace CWMTesting
             Assert.AreEqual(customer.Name, testData);
         }
 
-
         [TestMethod]
         public void AddressOK()
         {
@@ -219,6 +218,86 @@ namespace CWMTesting
         {
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NameExtremeMin()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Name = "";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NameOneLessThanMin()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Name = "a";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NameMinBoundary()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Name = "a,b";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NameOneMoreThanMin()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Name = "ab,b";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NameOneLessThanMax()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Name = "aaaaaaaaaaaaaaaaaaaaaaaa,aaaaaaaaaaaaaaaaaaaaaaaa";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NameMaxBoundary()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Name = "aaaaaaaaaaaaaaaaaaaaaaaaa,aaaaaaaaaaaaaaaaaaaaaaaa";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NameOneMoreThanMax()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Name = "aaaaaaaaaaaaaaaaaaaaaaaaa,aaaaaaaaaaaaaaaaaaaaaaaaa";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NameMidBoundary()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Name = "aaaaaaaaaaaaa,aaaaaaaaaaaaa";
             Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
             Assert.AreEqual(Error, "");
         }
