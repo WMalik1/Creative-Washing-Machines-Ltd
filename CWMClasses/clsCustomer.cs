@@ -118,5 +118,51 @@ namespace CWMClasses
             return Found;
         }
 
+        public string Valid(string name, string address, string email, string password, string registration_date)
+        {
+            String Error = "";
+            Error += ValidateName(name);
+            Error += ValidateAddress(address);
+            Error += ValidateEmail(email);
+            Error += ValidatePassword(password);
+            Error += ValidateRegistrationDate(registration_date);
+            return Error;
+        }
+
+        public string ValidateName(string name)
+        {
+            String Error = "";
+
+            return Error;
+        }
+
+        public string ValidateAddress(string name)
+        {
+            String Error = "";
+
+            return Error;
+        }
+
+        public string ValidateEmail(string name)
+        {
+            String Error = "";
+
+            return Error;
+        }
+
+        public string ValidatePassword(string name)
+        {
+            String Error = "";
+
+            return Error;
+        }
+
+        public string ValidateRegistrationDate(string name)
+        {
+            String Error = "";
+
+            return Error;
+        }
+
     }
 }

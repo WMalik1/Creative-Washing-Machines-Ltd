@@ -7,6 +7,13 @@ namespace CWMTesting
     [TestClass]
     public class TstCustomer
     {
+        string Name = "Joe,Bloggs";
+        string Address = "2 Random Street,RandomTown,RandomCounty,RN27FT";
+        string Email = "random.email@email.co.uk";
+        string Password = "password";
+        string Registration_date = DateTime.Now.Date.ToString();
+
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -205,6 +212,15 @@ namespace CWMTesting
             }
 
             Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreEqual(Error, "");
         }
 
     }

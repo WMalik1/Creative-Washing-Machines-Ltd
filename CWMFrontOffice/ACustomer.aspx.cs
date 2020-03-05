@@ -48,7 +48,7 @@ public partial class ACustomer : System.Web.UI.Page
 
         //customer registration date
         ACustomer.Registration_date = Convert.ToDateTime(txtRegistrationDate.Text);
-            
+
         Session["ACustomer"] = ACustomer;
         Response.Redirect("CustomerViewer.aspx");
     }
