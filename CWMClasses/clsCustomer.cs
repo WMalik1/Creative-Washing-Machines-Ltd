@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace CWMClasses
 {
@@ -132,45 +134,107 @@ namespace CWMClasses
         public string ValidateName(string name)
         {
             String Error = "";
-            //regex to be used later to get rid of symbols error regexItem = new Regex("^[a-zA-Z,]*$");
 
-            if (name.Length <= 1)
+            int NameLength = name.Length; 
+            if (NameLength < 2 || NameLength > 50)
             {
-                Error = "Name should have at least 2 characters.";
+                Error += "Name, including the space, must be between 2 and 50 characters long : ";
             }
 
-            if (name.Length > 50)
+            Regex nameRegex = new Regex("^[a-zA-Z,-]*$");
+            if (!nameRegex.IsMatch(name))
             {
-                Error = "Name, including space cannot be longer than 50 characters";
+                Error += "Name can only contain letters, spaces and hyphens : ";
+            }
+
+            if (name.Count(x => x == ',') == 0)
+            {
+                Error += "You need to have a space between your first and last name : ";
+            }
+
+            if (name.Count(x => x == ',') > 1)
+            {
+                Error += "You should only have one space in your name : ";
             }
 
             return Error;
         }
 
-        public string ValidateAddress(string name)
+        public string ValidateAddress(string address)
         {
             String Error = "";
+
+            if (address.Length > 250)
+            {
+                Error += "Address must be less than 250 characters : ";
+            }
+
+            int AddressLineCount = address.Split(',').Count();
+            if (AddressLineCount < 4 || AddressLineCount > 6)
+            {
+                Error += "Address needs to be anywhere from 4-6 lines : ";
+            }
+
+            Regex addressRegex = new Regex("^[a-zA-Z0-9, ]*$");
+            if (!addressRegex.IsMatch(address))
+            {
+                Error += "Address can only contain letters and digits : ";
+            }
+            
+            return Error;
+        }
+
+        public string ValidateEmail(string email)
+        {
+            String Error = "";
+
+            int EmailLength = email.Length;
+            if (EmailLength < 6 || EmailLength > 150)
+            {
+                Error += "Email must be between 6 and 150 characters long : ";
+            }
+
+            try
+            {
+                var EmailAddress = new System.Net.Mail.MailAddress(email);
+            }
+            catch
+            {
+                Error += "Email must be a valid email address : ";
+            }
 
             return Error;
         }
 
-        public string ValidateEmail(string name)
+        public string ValidatePassword(string password)
         {
             String Error = "";
+
+            int PasswordLength = password.Length;
+            if (PasswordLength < 8 || PasswordLength > 30)
+            {
+                Error += "Password must be between 8 and 30 characters long : ";
+            }
 
             return Error;
         }
 
-        public string ValidatePassword(string name)
+        public string ValidateRegistrationDate(string registration_date)
         {
             String Error = "";
 
-            return Error;
-        }
-
-        public string ValidateRegistrationDate(string name)
-        {
-            String Error = "";
+            try
+            {
+                DateTime Date = Convert.ToDateTime(registration_date);
+                if (Date != DateTime.Now.Date)
+                {
+                    Error += "Date must be today's date : ";
+                }
+            }
+            catch
+            {
+                Error += "Date must be a valid date format : ";
+            }
 
             return Error;
         }

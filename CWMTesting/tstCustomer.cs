@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using CWMClasses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -300,6 +301,387 @@ namespace CWMTesting
             String Name = "aaaaaaaaaaaaa,aaaaaaaaaaaaa";
             Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
             Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NameExtremeMax()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Name = String.Concat(Enumerable.Repeat('a', 48)) + ',' + String.Concat(Enumerable.Repeat('a', 49));
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NameInvalidType()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Name = "124236,j0+_-";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NameNoSpace()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Name = "JaredMarsh";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NameMultipleSpace()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Name = "Jared,,Marsh";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void AddressExtremeMin()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Address = "";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void AddressOneLessThanMin()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Address = "2 Random Street,RandomTown,RandomCounty";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void AddressMinBoundary()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Address = "2 Random Street,RandomTown,RandomCounty,RN27FT";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void AddressMaxBoundary()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Address = "Apartment 2A,2 Random Street,RandomTown,RandomCounty,RN27FT,United Kingdom";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void AddressOneMoreThanMax()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Address = "Apartment 2A,Building Name,2 Random Street,RandomTown,RandomCounty,RN27FT,country";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void AddressMidBoundary()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Address = "2 Random Street,RandomTown,RandomCounty,RN27FT,United Kingdom";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void AddressExtremeMax()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Address = "2 Random Street,RandomTown,RandomCounty,RN27FT,United Kingdom,PaddingLine,PaddingLine,PaddingLine,PaddingLine,PaddingLine";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void AddressInvalidType()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Address = "2 %Random Street%,Random%%Town,RandomCounty,R%N27FT,Un%ited Kingdom";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void AddressMaxLength()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Address = "";
+            Address = Address.PadRight(251, 'a');
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailExtremeMin()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Email = "";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailOneLessThanMin()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Email = "12345";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailMinBoundary()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Email = "a@a.tk";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailOneMoreThanMin()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Email = "a@a.com";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailOneLessThanMax()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Email = String.Concat(Enumerable.Repeat('a', 140)) + "@test.com";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailMaxBoundary()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Email = String.Concat(Enumerable.Repeat('a', 141)) + "@test.com";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailOneMoreThanMax()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Email = String.Concat(Enumerable.Repeat('a', 142)) + "@test.com";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailMidBoundary()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Email = String.Concat(Enumerable.Repeat('a', 69)) + "@test.com";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailExtremeMax()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Email = String.Concat(Enumerable.Repeat('a', 291)) + "@test.com";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailInvalidType()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Email = "Hello There";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PasswordExtremeMin()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Password = "";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PasswordOneLessThanMin()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Password = "1234567";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PasswordMinBoundary()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Password = "12345678";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PasswordOneMoreThanMin()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Password = "123456789";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PasswordOneLessThanMax()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Password = String.Concat(Enumerable.Repeat('a', 29));
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PasswordMaxBoundary()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Password = String.Concat(Enumerable.Repeat('a', 30));
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PasswordOneMoreThanMax()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Password = String.Concat(Enumerable.Repeat('a', 31));
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PasswordMidBoundary()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Password = String.Concat(Enumerable.Repeat('a', 21));
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PasswordExtremeMax()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Password = String.Concat(Enumerable.Repeat('a', 100));
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RegistrationDateExtremeMin()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Registration_date = DateTime.Now.Date.AddYears(-100).ToString();
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RegistrationDateOneLessThanMin()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Registration_date = DateTime.Now.Date.AddDays(-1).ToString();
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RegistrationDateMinBoundary()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Registration_date = DateTime.Now.Date.ToString();
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RegistrationDateOneMoreThanMin()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Registration_date = DateTime.Now.Date.AddDays(1).ToString();
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RegistrationDateExtremeMax()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Registration_date = DateTime.Now.Date.AddYears(100).ToString();
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RegistrationDateExtremeInvalidType()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            String Registration_date = "Invalid date";
+            Error = ACustomer.Valid(Name, Address, Email, Password, Registration_date);
+            Assert.AreNotEqual(Error, "");
         }
 
     }

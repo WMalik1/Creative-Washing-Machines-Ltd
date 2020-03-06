@@ -17,40 +17,47 @@ public partial class ACustomer : System.Web.UI.Page
     {
         clsCustomer ACustomer = new clsCustomer();
 
-        //collect customer name
+        //collect customer data
         string customerName = txtName.Text.Trim().Replace(' ', ',');
-        ACustomer.Name = customerName;
+        string customerEmail = txtEmail.Text.Trim();
+        string customerPassword = txtPassword.Text.Trim();
+        bool customerMarketingEmails = checkMarketingEmails.Checked;
+        string customerRegistrationDate = txtRegistrationDate.Text.Trim();
 
-        //collect customer address
         string customerAddress = "";
-        string[] customerAddressLines = txtAddress.Text.Trim().Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+        string[] customerAddressLines = txtAddress.Text.Trim().Replace(",", String.Empty).Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
         string lastLine = customerAddressLines.Last();
-
-        foreach(string line in customerAddressLines) {
+        foreach (string line in customerAddressLines)
+        {
             if (line.Equals(lastLine))
             {
                 customerAddress += line;
-            } else
+            }
+            else
             {
                 customerAddress += line + ',';
             }
         }
-        ACustomer.Address = customerAddress;
 
-        //collect customer email
-        ACustomer.Email = txtEmail.Text.Trim();
+        string Error = "";
+        Error = ACustomer.Valid(customerName, customerAddress, customerEmail, customerPassword, customerRegistrationDate);
 
-        //collect customer password
-        ACustomer.Password = txtPassword.Text.Trim();
+        if (Error == "")
+        {
+            ACustomer.Name = customerName;
+            ACustomer.Address = customerAddress;
+            ACustomer.Email = customerEmail;
+            ACustomer.Password = customerPassword;
+            ACustomer.Marketing_emails = customerMarketingEmails;
+            ACustomer.Registration_date = Convert.ToDateTime(customerRegistrationDate);
+            Session["ACustomer"] = ACustomer;
+            Response.Redirect("CustomerViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
 
-        //collect marketing emails preference
-        ACustomer.Marketing_emails = checkMarketingEmails.Checked;
-
-        //customer registration date
-        ACustomer.Registration_date = Convert.ToDateTime(txtRegistrationDate.Text);
-
-        Session["ACustomer"] = ACustomer;
-        Response.Redirect("CustomerViewer.aspx");
     }
 
     protected void btnFind_Click(object sender, EventArgs e)

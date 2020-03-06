@@ -13,7 +13,7 @@
             <asp:TextBox ID="txtCustomerID" runat="server"></asp:TextBox>
             <asp:Button ID ="btnFind" runat="server" text="Find" OnClick="btnFind_Click"/>
             <br />
-            <asp:Label ID="lblName" runat="server" AssociatedControlID="txtName" Text="Name"></asp:Label>
+            <asp:Label ID="lblName" runat="server" AssociatedControlID="txtName" Text="Name (Space between first and last name)"></asp:Label>
             <br />
             <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
             <br />
@@ -37,6 +37,8 @@
             <br />
             <asp:Button ID="btnOK" runat="server" Text="OK" OnClick="btnOK_Click" />
             <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
+            <br />
+            <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
         </form>
     </body>
 </html>
