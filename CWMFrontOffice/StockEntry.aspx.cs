@@ -40,7 +40,7 @@ public partial class StockEntry : System.Web.UI.Page
             Response.Write("stockViewer.aspx");
         } else
         {
-            
+            lblError.Text = Error;
         }
 
     }
