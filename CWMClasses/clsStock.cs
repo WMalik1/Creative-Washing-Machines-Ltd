@@ -113,5 +113,57 @@ namespace CWMClasses
             }
         }
 
+        public string Valid(string description, string price, string pristine, string non_Pristine, string next_Intake)
+        {
+            String Error = "";
+            DateTime DateTemp;
+            Decimal Price;
+            int Pristine;
+            int Non_Pristine;
+
+            if (description == "")
+            {
+                Error = Error + "The description may not be blank : ";
+            }
+
+            if (description.Length > 80)
+            {
+                Error = Error + "The description may not be more than 80 characters : ";
+            }
+
+            try
+            {
+                DateTemp = Convert.ToDateTime(next_Intake);
+                if ((DateTemp < DateTime.Now.Date))
+                {
+                    Error = Error + "The date cannot be in the past : ";
+                }
+
+                if (DateTemp > DateTime.Now.Date.AddYears(2))
+                {
+                    Error = Error + "The next intake must be within the next 2 years : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The date was not a valid date : ";
+            }
+                       
+            if (!decimal.TryParse(price, out Price))
+            {
+                Error = Error + "The price given was not a valid price : ";
+            }
+
+            if (!int.TryParse(pristine, out Pristine))
+            {
+                Error = Error + "The given pristine value is not valid : ";
+            }
+            
+            if (!int.TryParse(non_Pristine, out Non_Pristine))
+            {
+                Error = Error + "The given pristine value is not valid : ";
+            }
+            return Error;
+        }
     }
 }
