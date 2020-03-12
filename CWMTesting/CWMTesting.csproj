@@ -55,6 +55,7 @@
     <Compile Include="TstCustomer.cs" />
     <Compile Include="tstStock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TstCustomerCollection.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
