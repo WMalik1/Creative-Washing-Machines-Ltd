@@ -64,7 +64,13 @@ public partial class ACustomer : System.Web.UI.Page
     {
         clsCustomer ACustomer = new clsCustomer();
         Int32 Customer_id;
-        Customer_id = Convert.ToInt32(txtCustomerID.Text);
+        if (txtCustomerID.Text.Length != 0)
+        {
+            Customer_id = Convert.ToInt32(txtCustomerID.Text);
+        } else
+        {
+            Customer_id = 1;
+        }
         Boolean Found = ACustomer.Find(Customer_id);
 
         if (Found == true)
