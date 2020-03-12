@@ -15,6 +15,7 @@ namespace CWMClasses
         public int Total_cost { get; set; }
 
         public System.DateTime Date_delivery { get; set; }
+        public DateTime DateAdded { get; set; }
 
         public bool Find(int OrderID)
         {
