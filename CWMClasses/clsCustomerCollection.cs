@@ -38,19 +38,19 @@ namespace CWMClasses
             int RecordCount = 0;
             
             clsDataConnection DB = new clsDataConnection();
-            DB.Execute("");
+            DB.Execute("sproc_customer_SelectAll");
             RecordCount = DB.Count;
 
             while (Index < RecordCount)
             {
                 clsCustomer ACustomer = new clsCustomer();
-                ACustomer.Customer_id = Convert.ToInt32(DB.DataTable.Rows[Index][""]);
-                ACustomer.Name = Convert.ToString(DB.DataTable.Rows[Index][""]);
-                ACustomer.Address = Convert.ToString(DB.DataTable.Rows[Index][""]);
-                ACustomer.Email = Convert.ToString(DB.DataTable.Rows[Index][""]);
-                ACustomer.Password = Convert.ToString(DB.DataTable.Rows[Index][""]);
-                ACustomer.Marketing_emails = Convert.ToBoolean(DB.DataTable.Rows[Index][""]);
-                ACustomer.Registration_date = Convert.ToDateTime(DB.DataTable.Rows[Index][""]);
+                ACustomer.Customer_id = Convert.ToInt32(DB.DataTable.Rows[Index]["customer_id"]);
+                ACustomer.Name = Convert.ToString(DB.DataTable.Rows[Index]["name"]);
+                ACustomer.Address = Convert.ToString(DB.DataTable.Rows[Index]["address"]);
+                ACustomer.Email = Convert.ToString(DB.DataTable.Rows[Index]["email"]);
+                ACustomer.Password = Convert.ToString(DB.DataTable.Rows[Index]["password"]);
+                ACustomer.Marketing_emails = Convert.ToBoolean(DB.DataTable.Rows[Index]["marketing_emails"]);
+                ACustomer.Registration_date = Convert.ToDateTime(DB.DataTable.Rows[Index]["registration_date"]);
 
                 mCustomerList.Add(ACustomer);
                 Index++;
