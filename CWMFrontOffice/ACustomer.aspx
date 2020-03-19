@@ -19,7 +19,7 @@
             <br />
             <asp:Label ID="lblAddress" runat="server" AssociatedControlID="txtAddress" Text="Address (Each address line on a new line)"></asp:Label>
             <br />
-            <asp:TextBox ID="txtAddress" runat="server" TextMode="MultiLine" Width="245px"></asp:TextBox>
+            <asp:TextBox ID="txtAddress" runat="server" TextMode="MultiLine" Width="245px" Height="100px"></asp:TextBox>
             <br />
             <asp:Label ID="lblEmail" runat="server" AssociatedControlID="txtEmail" Text="Email"></asp:Label>
             <br />

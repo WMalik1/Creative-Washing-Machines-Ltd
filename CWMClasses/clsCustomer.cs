@@ -100,7 +100,7 @@ namespace CWMClasses
         public bool Find(int Customer_id)
         {
             Boolean Found = false;
-            
+
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@customer_id", Customer_id);
             DB.Execute("sproc_customer_FilterByCustomerID");
