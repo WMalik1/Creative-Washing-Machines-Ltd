@@ -14,7 +14,6 @@ namespace CWMTesting
         string Password = "password";
         string Registration_date = DateTime.Now.Date.ToString();
 
-
         [TestMethod]
         public void InstanceOK()
         {
@@ -206,7 +205,7 @@ namespace CWMTesting
             Int32 Customer_id = 1;
             Found = ACustomer.Find(Customer_id);
 
-            if (ACustomer.Registration_date.ToString("dd-MM-yyyy").Equals("20/02/2020"))
+            if (ACustomer.Registration_date.ToString("dd-MM-yyyy").Equals("20/03/2020"))
             {
                 OK = false;
             }
