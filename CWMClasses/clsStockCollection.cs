@@ -82,13 +82,25 @@ namespace CWMClasses
 
         }
 
-        public clsStockCollection()
+        public void ReportByDescription(string Description)
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@Description", Description);
+
+            DB.Execute("sproc_Stock_FilterByDescription");
+
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
         {
             Int32 Index = 0;
-            Int32 RecordCount = 0;
-            clsDataConnection DB = new clsDataConnection();
-            DB.Execute("sproc_Stock_SelectAll");
+            Int32 RecordCount;
+
             RecordCount = DB.Count;
+
+            mStockList = new List<clsStock>();
 
             while (Index < RecordCount)
             {
@@ -107,6 +119,18 @@ namespace CWMClasses
                 Index++;
             }
         }
+
+        public clsStockCollection()
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.Execute("sproc_Stock_SelectAll");
+
+            PopulateArray(DB);
+                     
+        }
+
+        
     }
 
     

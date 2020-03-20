@@ -72,4 +72,26 @@ public partial class StockList : System.Web.UI.Page
             lblError.Text = "Please select a stock item to edit from the list";
         }
     }
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        clsStockCollection stock = new clsStockCollection();
+        stock.ReportByDescription(txtDescriptionFilter.Text);
+        lstStockList.DataSource = stock.StockList;
+        lstStockList.DataValueField = "Product_Code";
+        lstStockList.DataTextField = "Description";
+        lstStockList.DataBind();
+
+    }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        clsStockCollection stock = new clsStockCollection();
+        stock.ReportByDescription("");
+        txtDescriptionFilter.Text = "";
+        lstStockList.DataSource = stock.StockList;
+        lstStockList.DataValueField = "Product_Code";
+        lstStockList.DataTextField = "Description";
+        lstStockList.DataBind();
+    }
 }
