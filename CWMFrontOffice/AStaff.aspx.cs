@@ -15,14 +15,34 @@ public partial class AStaff : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsStaff AStaff = new clsStaff();
-        AStaff.staff_id = Convert.ToInt32(txtStaffID.Text);
-        AStaff.Name = txtName.Text;
-        AStaff.Email = txtEmail.Text;
-        AStaff.Hire_Date = Convert.ToDateTime(txtHireDate.Text);
-        AStaff.Active = Convert.ToBoolean(checkActive.Text);
-        AStaff.Salary = Convert.ToDouble(txtSalary.Text);
-        Session["AStaff"] = AStaff;
-        Response.Redirect("StaffViewer.aspx");
+        string Name = txtName.Text;
+        string Email = txtEmail.Text;
+        string Hire_Date = txtHireDate.Text;
+        bool Active = checkActive.Checked;
+        string Salary = txtSalary.Text;
+        string Error = "";
+
+        Error = AStaff.Valid(Name, Email, Hire_Date, Salary);
+
+        if (Error == "")
+
+        {
+
+            AStaff.Name = Name;
+            AStaff.Email = Email;
+            AStaff.Hire_Date = Convert.ToDateTime(Hire_Date);
+            AStaff.Active = checkActive.Checked;
+            AStaff.Salary = Convert.ToDouble(Salary);
+            Session["AStaff"] = AStaff;
+            Response.Write("StaffViewer.aspx");
+
+        }
+        else
+        {
+          
+
+        }
+       
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
