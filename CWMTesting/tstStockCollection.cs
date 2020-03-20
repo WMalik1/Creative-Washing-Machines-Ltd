@@ -150,7 +150,8 @@ namespace CWMTesting
             Assert.IsFalse(Found);
 
         }
-
+        
+        [TestMethod]
         public void UpdateMethodOK()
         {
             clsStockCollection Allstock = new clsStockCollection();
@@ -188,6 +189,52 @@ namespace CWMTesting
 
             Assert.AreEqual(Allstock.ThisStock, TestItem);
 
+        }
+
+        [TestMethod]
+        public void ReportByDescriptionMethodOK()
+        {
+            clsStockCollection AllStock = new clsStockCollection();
+            clsStockCollection FilteredStockItems = new clsStockCollection();
+            FilteredStockItems.ReportByDescription("");
+            Assert.AreEqual(AllStock.Count, FilteredStockItems.Count);
+        }
+
+        [TestMethod]
+        public void ReportByDescriptionNoneFound()
+        {
+            clsStockCollection FilteredStockItems = new clsStockCollection();
+            FilteredStockItems.ReportByDescription("xxx xxx");
+            Assert.AreEqual(0, FilteredStockItems.Count);
+        }
+
+        [TestMethod]
+        public void ReportByDescriptionTestDataFound()
+        {
+            clsStockCollection FilteredStockItems = new clsStockCollection();
+
+            Boolean OK = true;
+
+            FilteredStockItems.ReportByDescription("yyy yyy");
+
+            if (FilteredStockItems.Count == 2)
+            {
+                if (FilteredStockItems.StockList[0].Product_Code != 89)
+                {
+                    OK = false;
+                }
+
+                if (FilteredStockItems.StockList[1].Product_Code != 90)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false; 
+            }
+
+            Assert.IsTrue(OK);
         }
 
     }
