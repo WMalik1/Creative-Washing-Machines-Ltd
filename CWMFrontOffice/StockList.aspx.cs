@@ -1,4 +1,5 @@
 ﻿using System;
+using CWMClasses;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -19,7 +20,7 @@ public partial class StockList : System.Web.UI.Page
 
     void DisplayStockItems()
     {
-        CWMClasses.clsStockCollection stockItems = new CWMClasses.clsStockCollection();
+        clsStockCollection stockItems = new CWMClasses.clsStockCollection();
 
         lstStockList.DataSource = stockItems.StockList;
 
@@ -53,4 +54,22 @@ public partial class StockList : System.Web.UI.Page
         }
     }
 
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        Int32 Product_Code;
+
+        if (lstStockList.SelectedIndex != -1)
+        {
+            Product_Code = Convert.ToInt32(lstStockList.SelectedValue);
+
+            Session["Product_Code"] = Product_Code;
+
+            Response.Redirect("StockEntry.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a stock item to edit from the list";
+        }
+    }
 }
