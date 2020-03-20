@@ -94,6 +94,7 @@ namespace CWMClasses
             {
                 clsStock stock = new clsStock();
 
+                stock.Product_Code = Convert.ToInt32(DB.DataTable.Rows[Index]["Product_Code"]);
                 stock.Clearence = Convert.ToBoolean(DB.DataTable.Rows[Index]["Clearence"]);
                 stock.Description = Convert.ToString(DB.DataTable.Rows[Index]["Description"]);
                 stock.Price = Convert.ToDouble(DB.DataTable.Rows[Index]["Price"]);
