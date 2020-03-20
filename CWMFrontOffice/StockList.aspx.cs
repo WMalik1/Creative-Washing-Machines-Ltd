@@ -29,4 +29,28 @@ public partial class StockList : System.Web.UI.Page
 
         lstStockList.DataBind();
     }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        Session["Product_Code"] = -1;
+        Response.Redirect("StockEntry.aspx");
+    }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        Int32 Product_Code;
+        if (lstStockList.SelectedIndex != 1)
+        {
+            Product_Code = Convert.ToInt32(lstStockList.SelectedValue);
+
+            Session["Product_Code"] = Product_Code;
+
+            Response.Redirect("DeleteStock.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a stock item to delete from the list";
+        }
+    }
+
 }
