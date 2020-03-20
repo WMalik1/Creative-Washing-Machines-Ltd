@@ -30,6 +30,7 @@ namespace CWMTesting
 
             clsStock TestItem = new clsStock();
 
+            TestItem.Product_Code = 1;
             TestItem.Clearence = true;
             TestItem.Description = "example";
             TestItem.Price = 9999.99;
@@ -52,6 +53,7 @@ namespace CWMTesting
 
             clsStock TestStock = new clsStock();
 
+            TestStock.Product_Code = 1;
             TestStock.Clearence = true;
             TestStock.Description = "example";
             TestStock.Price = 9999.99;
@@ -74,6 +76,7 @@ namespace CWMTesting
 
             clsStock TestItem = new clsStock();
 
+            TestItem.Product_Code = 1;
             TestItem.Clearence = true;
             TestItem.Description = "example";
             TestItem.Price = 9999.99;

@@ -6,6 +6,8 @@ namespace CWMClasses
     public class clsStockCollection
     {
         List<clsStock> mStockList = new List<clsStock>();
+
+        clsStock mThisStock = new clsStock();
         public List<clsStock> StockList
         {
             get
@@ -28,7 +30,41 @@ namespace CWMClasses
 
             }
         }
-        public clsStock ThisStock { get; set; }
+        public clsStock ThisStock 
+        {
+            get
+            {
+                return mThisStock;
+            }
+            set
+            {
+                mThisStock = value;
+            }
+        }
+
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@Description", mThisStock.Description);
+            DB.AddParameter("@Price", mThisStock.Price);
+            DB.AddParameter("@Pristine", mThisStock.Pristine);
+            DB.AddParameter("@Non_Pristine", mThisStock.Non_Pristine);
+            DB.AddParameter("@Clearence", mThisStock.Clearence);
+            DB.AddParameter("@Next_Intake", mThisStock.Next_Intake);
+
+            return DB.Execute("sproc_Stock_Insert");
+
+        }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@Product_Code", mThisStock.Product_Code);
+
+            DB.Execute("sproc_Stock_Delete");
+        }
 
         public clsStockCollection()
         {
@@ -54,6 +90,8 @@ namespace CWMClasses
                 Index++;
             }
         }
+
+      
     }
 
     

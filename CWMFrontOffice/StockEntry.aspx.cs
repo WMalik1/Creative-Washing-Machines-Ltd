@@ -36,9 +36,15 @@ public partial class StockEntry : System.Web.UI.Page
             stock.Non_Pristine = Convert.ToInt32(Non_Pristine);
             stock.Clearence = checkClearence.Checked;
 
-            Session["stock"] = stock;
-            Response.Write("stockViewer.aspx");
-        } else
+            clsStockCollection StockList = new clsStockCollection();
+
+            StockList.ThisStock = stock;
+
+            StockList.Add();
+
+            Response.Redirect("StockList.aspx");
+        } 
+        else
         {
             lblError.Text = Error;
         }
