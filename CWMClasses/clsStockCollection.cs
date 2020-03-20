@@ -66,6 +66,22 @@ namespace CWMClasses
             DB.Execute("sproc_Stock_Delete");
         }
 
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@Product_Code", mThisStock.Product_Code);
+            DB.AddParameter("@Description", mThisStock.Description);
+            DB.AddParameter("@Price", mThisStock.Price);
+            DB.AddParameter("@Pristine", mThisStock.Pristine);
+            DB.AddParameter("@Non_Pristine", mThisStock.Non_Pristine);
+            DB.AddParameter("@Clearence", mThisStock.Clearence);
+            DB.AddParameter("@Next_Intake", mThisStock.Next_Intake);
+
+            DB.Execute("sproc_Stock_Update");
+
+        }
+
         public clsStockCollection()
         {
             Int32 Index = 0;
@@ -90,8 +106,6 @@ namespace CWMClasses
                 Index++;
             }
         }
-
-      
     }
 
     

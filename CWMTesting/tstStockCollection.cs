@@ -91,5 +91,104 @@ namespace CWMTesting
             Assert.AreEqual(AllStock.Count, TestList.Count);
         }
 
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            clsStockCollection AllStock = new clsStockCollection();
+
+            clsStock TestItem = new clsStock();
+
+            Int32 PrimaryKey = 0;
+
+            TestItem.Product_Code = 1;
+            TestItem.Clearence = true;
+            TestItem.Description = "AddMethodExample";
+            TestItem.Price = 9999.99;
+            TestItem.Pristine = 12;
+            TestItem.Non_Pristine = 15;
+            TestItem.Next_Intake = DateTime.Now.Date;
+
+            AllStock.ThisStock = TestItem;
+
+            PrimaryKey = AllStock.Add();
+
+            TestItem.Product_Code = PrimaryKey;
+
+            AllStock.ThisStock.Find(PrimaryKey);
+
+            Assert.AreEqual(AllStock.ThisStock, TestItem);
+        }
+
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsStockCollection AllStock = new clsStockCollection();
+
+            clsStock TestItem = new clsStock();
+
+            Int32 PrimaryKey = 0;
+
+            TestItem.Clearence = true;
+            TestItem.Description = "AddMethodExample";
+            TestItem.Price = 9999.99;
+            TestItem.Pristine = 12;
+            TestItem.Non_Pristine = 15;
+            TestItem.Next_Intake = DateTime.Now.Date;
+
+            AllStock.ThisStock = TestItem;
+
+            PrimaryKey = AllStock.Add();
+
+            TestItem.Product_Code = PrimaryKey;
+
+            AllStock.ThisStock.Find(PrimaryKey);
+
+            AllStock.Delete();
+
+            Boolean Found = AllStock.ThisStock.Find(PrimaryKey);
+
+            Assert.IsFalse(Found);
+
+        }
+
+        public void UpdateMethodOK()
+        {
+            clsStockCollection Allstock = new clsStockCollection();
+
+            clsStock TestItem = new clsStock();
+
+            Int32 PrimaryKey = 0;
+
+            
+            TestItem.Clearence = true;
+            TestItem.Description = "AddMethodExample";
+            TestItem.Price = 9999.99;
+            TestItem.Pristine = 12;
+            TestItem.Non_Pristine = 15;
+            TestItem.Next_Intake = DateTime.Now.Date;
+
+            Allstock.ThisStock = TestItem;
+
+            PrimaryKey = Allstock.Add();
+
+            TestItem.Product_Code = PrimaryKey;
+
+            TestItem.Clearence = true;
+            TestItem.Description = "AddMethodExampleChanged";
+            TestItem.Price = 1234.99;
+            TestItem.Pristine = 14;
+            TestItem.Non_Pristine = 23;
+            TestItem.Next_Intake = DateTime.Now.Date;
+
+            Allstock.ThisStock = TestItem;
+
+            Allstock.Update();
+
+            Allstock.ThisStock.Find(PrimaryKey);
+
+            Assert.AreEqual(Allstock.ThisStock, TestItem);
+
+        }
+
     }
 }
