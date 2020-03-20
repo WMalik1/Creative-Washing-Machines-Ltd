@@ -124,7 +124,7 @@ namespace CWMTesting
             Int32 staff_id = 1;
             Found = AStaff.Find(staff_id);
 
-            if (AStaff.Email != "random.email@email.co.uk")
+            if (AStaff.Email != "effaj@gmail.com")
             {
                 OK = false;
             }
@@ -142,7 +142,7 @@ namespace CWMTesting
             Int32 staff_id = 1;
             Found = AStaff.Find(staff_id);
 
-            if (AStaff.Active != false)
+            if (AStaff.Active != true)
             {
                 OK = false;
             }
@@ -159,7 +159,7 @@ namespace CWMTesting
             Int32 staff_id = 1;
             Found = AStaff.Find(staff_id);
 
-            if (AStaff.Hire_Date.ToString("dd-MM-yyyy").Equals("05/03/2020"))
+            if (AStaff.Hire_Date.ToString("dd-MM-yyyy").Equals("07/08/2012"))
             {
                 OK = false;
             }
@@ -177,7 +177,7 @@ namespace CWMTesting
             Int32 staff_id = 1;
             Found = AStaff.Find(staff_id);
 
-            if (AStaff.Salary != 1000.00)
+            if (AStaff.Salary != 4000.00)
             {
                 OK = false;
             }

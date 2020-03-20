@@ -19,4 +19,6 @@ public partial class StaffViewer : System.Web.UI.Page
         Response.Write(AStaff.Active + "<br />");
         Response.Write(AStaff.Salary + "<br />");
     }
+
+
 }

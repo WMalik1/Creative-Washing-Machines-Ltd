@@ -91,11 +91,11 @@ namespace CWMClasses
             {
 
                 mstaff_id = Convert.ToInt32(DB.DataTable.Rows[0]["staff_id"]);
-                mName = Convert.ToString(DB.DataTable.Rows[0]["Name"]);
-                mEmail = Convert.ToString(DB.DataTable.Rows[0]["Email"]);
-                mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
-                mHire_Date = Convert.ToDateTime(DB.DataTable.Rows[0]["Hire_Date"]);
-                mSalary = Convert.ToDouble(DB.DataTable.Rows[0]["Salary"]);
+                mName = Convert.ToString(DB.DataTable.Rows[0]["name"]);
+                mEmail = Convert.ToString(DB.DataTable.Rows[0]["email_address"]);
+                mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["active"]);
+                mHire_Date = Convert.ToDateTime(DB.DataTable.Rows[0]["hire_date"]);
+                mSalary = Convert.ToDouble(DB.DataTable.Rows[0]["salary"]);
 
                 return true;
 
