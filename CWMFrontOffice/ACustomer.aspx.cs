@@ -8,9 +8,47 @@ using CWMClasses;
 
 public partial class ACustomer : System.Web.UI.Page
 {
+    int Customer_id;
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        Customer_id = Convert.ToInt32(Session["Customer_id"]);
+        if (IsPostBack == false)
+        {
+            if (Customer_id != -1)
+            {
+                DisplayAddress();
+            }
+        }
+    }
+
+    protected void DisplayAddress()
+    {
+        clsCustomerCollection CustomerList = new clsCustomerCollection();
+        CustomerList.ThisCustomer.Find(Customer_id);
+
+        txtName.Text = CustomerList.ThisCustomer.Name.Replace(',', ' ');
+
+        string customerAddress = "";
+        string[] customerAddressLines = CustomerList.ThisCustomer.Address.Split(',');
+        string lastLine = customerAddressLines.Last();
+        foreach (string line in customerAddressLines)
+        {
+            if (line.Equals(lastLine))
+            {
+                customerAddress += line;
+            }
+            else
+            {
+                customerAddress += line + Environment.NewLine;
+            }
+        }
+        txtAddress.Text = customerAddress;
+
+        txtEmail.Text = CustomerList.ThisCustomer.Email;
+        txtPassword.Attributes["value"] = CustomerList.ThisCustomer.Password;
+        checkMarketingEmails.Checked = CustomerList.ThisCustomer.Marketing_emails;
+        txtRegistrationDate.Text = CustomerList.ThisCustomer.Registration_date.ToString("yyyy-MM-dd");
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -44,14 +82,29 @@ public partial class ACustomer : System.Web.UI.Page
 
         if (Error == "")
         {
+            ACustomer.Customer_id = Customer_id;
             ACustomer.Name = customerName;
             ACustomer.Address = customerAddress;
             ACustomer.Email = customerEmail;
             ACustomer.Password = customerPassword;
             ACustomer.Marketing_emails = customerMarketingEmails;
             ACustomer.Registration_date = Convert.ToDateTime(customerRegistrationDate);
-            Session["ACustomer"] = ACustomer;
-            Response.Redirect("CustomerViewer.aspx");
+
+            clsCustomerCollection CustomerList = new clsCustomerCollection();
+            
+            if (Customer_id == -1)
+            {
+                CustomerList.ThisCustomer = ACustomer;
+                CustomerList.Add();
+            }
+            else
+            {
+                CustomerList.ThisCustomer.Find(Customer_id);
+                CustomerList.ThisCustomer = ACustomer;
+                CustomerList.Update();
+            }
+
+            Response.Redirect("CustomerList.aspx");
         }
         else
         {
