@@ -140,7 +140,7 @@ namespace CWMClasses
             int NameLength = name.Length;
             if (NameLength < 2 || NameLength > 50)
             {
-                Error += "Name, including the space, must be between 2 and 50 characters long : ";
+                Error += "Name, including the space, must be between 2 and 50 characters in length: ";
             }
 
             Regex nameRegex = new Regex("^[a-zA-Z,-]*$");
@@ -226,7 +226,7 @@ namespace CWMClasses
 
             {
 
-                Error = Error + "The price given was not a valid price : ";
+                Error = Error + "The salary provided was not valid: ";
 
             }
 
