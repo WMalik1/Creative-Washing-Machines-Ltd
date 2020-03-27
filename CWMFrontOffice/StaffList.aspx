@@ -8,7 +8,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div style="height: 530px">
+            <asp:ListBox ID="lstStaff" runat="server" Height="379px" Width="546px"></asp:ListBox>
         </div>
     </form>
 </body>
