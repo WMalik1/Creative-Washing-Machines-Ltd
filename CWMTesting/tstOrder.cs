@@ -83,50 +83,5 @@ namespace CWMTesting
             Assert.IsTrue(Found);
         }
 
-        [TestMethod]
-        public void TestOrderNoFound()
-        {
-            //creat an instance of the class we want to create
-            clsOrder AnOrder = new clsOrder();
-            //boolean variable to store the result of the search
-            Boolean Found = false;
-            //boolean variable to record if data is OK (assume it is)
-            Boolean OK = true;
-            //create some test data to use with the method
-            Int32 OrderID = 21;
-            //invoke the method
-            Found = AnOrder.Find(OrderID);
-            //check the OrderID
-            if (AnOrder.OrderID != 21)
-            {
-                OK = false;
-            }
-            //test to see that the result is correct
-            Assert.IsTrue(OK);
-        }
-
-        [TestMethod]
-        public void TestDateAddedFound()
-        {
-            //create an instance of the class we want to create
-            clsOrder AnOrder = new clsOrder();
-            //boolean variable to store the result of the search
-            Boolean Found = false;
-            //boolean variable to record if data is OK (assume it is)
-            Boolean OK = true;
-            //create some test data to use with the method
-            Int32 OrderID = 21;
-            //invode the method
-            Found = AnOrder.Find(OrderID);
-            //check the property
-            if (AnOrder.DateAdded != Convert.ToDateTime(16/09/2019))
-            {
-                OK = false;
-            }
-            //test to see that the result is correct
-            Assert.IsTrue(OK);
-        }
-
-
     }
 }
