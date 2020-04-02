@@ -79,7 +79,7 @@ namespace CWMTesting
             Int32 OrderID = 1;
             //invoke the method
             Found = AnOrder.Find(OrderID);
-            //test to see that the result is correct
+            //test to see that the result is correc
             Assert.IsTrue(Found);
         }
 
