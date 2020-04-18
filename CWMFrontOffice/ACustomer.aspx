@@ -36,7 +36,7 @@
             <asp:TextBox ID="txtRegistrationDate" runat="server" TextMode="Date"></asp:TextBox>
             <br />
             <asp:Button ID="btnOK" runat="server" Text="OK" OnClick="btnOK_Click" />
-            <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
+            <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" />
             <br />
             <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
         </form>

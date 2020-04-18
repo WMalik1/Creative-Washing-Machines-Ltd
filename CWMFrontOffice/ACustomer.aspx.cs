@@ -12,7 +12,14 @@ public partial class ACustomer : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        Customer_id = Convert.ToInt32(Session["Customer_id"]);
+        if (Session["Customer_id"] == null)
+        {
+            Customer_id = -1;
+        } else
+        {
+            Customer_id = Convert.ToInt32(Session["Customer_id"]);
+        }
+
         if (IsPostBack == false)
         {
             if (Customer_id != -1)
@@ -111,6 +118,11 @@ public partial class ACustomer : System.Web.UI.Page
             lblError.Text = Error;
         }
 
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("CustomerList.aspx");
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
