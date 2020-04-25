@@ -5,9 +5,28 @@ namespace CWMClasses
 {
     public class clsStaffCollection
     {
-        List<clsStaff> mStaffList = new List<clsStaff>();
 
-        public clsStaff ThisStaff { get; set; }
+
+        List<clsStaff> mStaffList = new List<clsStaff>();
+        clsStaff mThisStaff = new clsStaff();
+
+        public clsStaff ThisStaff
+        {
+            get
+            {
+                return mThisStaff;
+
+
+            }
+            set
+            {
+
+                mThisStaff = value;
+
+
+            }
+
+        }
 
         public List<clsStaff> StaffList
         {
@@ -44,14 +63,23 @@ namespace CWMClasses
 
         public clsStaffCollection()
         {
-
-            Int32 Index = 0;
-            Int32 RecordCount = 0;
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_staff_SelectAll");
+            PopulateArray(DB);
+          
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            Int32 Index = 0;
+            Int32 RecordCount;
+
             RecordCount = DB.Count;
+            mStaffList = new List<clsStaff>();
+
             while (Index < RecordCount)
             {
+
                 clsStaff AStaff = new clsStaff();
 
                 AStaff.staff_id = Convert.ToInt32(DB.DataTable.Rows[Index]["staff_id"]);
@@ -64,8 +92,62 @@ namespace CWMClasses
                 mStaffList.Add(AStaff);
 
                 Index++;
+
             }
 
+        }
+
+
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@name", mThisStaff.Name);
+            DB.AddParameter("@email_address", mThisStaff.Email);
+            DB.AddParameter("@hire_date", mThisStaff.Hire_Date);
+            DB.AddParameter("@salary", mThisStaff.Salary);
+            DB.AddParameter("@active", mThisStaff.Active);
+
+            return DB.Execute("sproc_staff_Insert");
+
+        }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@staff_id", mThisStaff.staff_id);
+            DB.Execute("sproc_staff_Delete");
+
+        }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@staff_id", mThisStaff.staff_id);
+            DB.AddParameter("@name", mThisStaff.Name);
+            DB.AddParameter("@email_address", mThisStaff.Email);
+            DB.AddParameter("@hire_date", mThisStaff.Hire_Date);
+            DB.AddParameter("@salary", mThisStaff.Salary);
+            DB.AddParameter("@active", mThisStaff.Active);
+
+            DB.Execute("sproc_staff_Update");
+        }
+
+        public void ReportByEmail(string Email)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@email_address", Email);
+            DB.Execute("sproc_staff_FilterByEmail");
+            PopulateArray(DB);
+        }
+
+        public void FilterByActive(bool Active)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@active", Active);
+            DB.Execute("sproc_staff_FilterByActive");
+            PopulateArray(DB);
         }
     }
 
