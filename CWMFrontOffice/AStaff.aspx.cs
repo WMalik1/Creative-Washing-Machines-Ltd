@@ -8,10 +8,22 @@ using CWMClasses;
 
 public partial class AStaff : System.Web.UI.Page
 {
+    Int32 staff_id;
     protected void Page_Load(object sender, EventArgs e)
     {
-       
+
+        staff_id = Convert.ToInt32(Session["staff_id"]);
+        if (IsPostBack == false)
+        {
+            if (staff_id != -1)
+            {
+                DisplayStaff();
+            }
+
+        }
     }
+
+
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsStaff AStaff = new clsStaff();
@@ -27,22 +39,38 @@ public partial class AStaff : System.Web.UI.Page
         if (Error == "")
 
         {
-
+            AStaff.staff_id = staff_id;
             AStaff.Name = Name;
             AStaff.Email = Email;
             AStaff.Hire_Date = Convert.ToDateTime(Hire_Date);
             AStaff.Active = checkActive.Checked;
             AStaff.Salary = Convert.ToDouble(Salary);
-            Session["AStaff"] = AStaff;
-            Response.Write("StaffViewer.aspx");
+            clsStaffCollection StaffList = new clsStaffCollection();
+            
+            if (staff_id == -1)
+            {
+                StaffList.ThisStaff = AStaff;
+                StaffList.Add();
+            
+            }
+            else
+            {
+                StaffList.ThisStaff.Find(staff_id);
+                StaffList.ThisStaff = AStaff;
+                StaffList.Update();
+            }
+
+            Response.Redirect("StaffList.aspx");
 
         }
         else
+
         {
-          
+
+            lblError.Text = Error;
 
         }
-       
+
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
@@ -64,5 +92,17 @@ public partial class AStaff : System.Web.UI.Page
 
         }
 
+    }
+
+
+    void DisplayStaff()
+    {
+        clsStaffCollection StaffBook = new clsStaffCollection();
+        StaffBook.ThisStaff.Find(staff_id);
+        txtStaffID.Text = StaffBook.ThisStaff.staff_id.ToString();
+        txtName.Text = StaffBook.ThisStaff.Name;
+        txtEmail.Text = StaffBook.ThisStaff.Email;
+        txtHireDate.Text = StaffBook.ThisStaff.Hire_Date.ToString();
+        checkActive.Checked = StaffBook.ThisStaff.Active;
     }
 }
