@@ -14,7 +14,7 @@ public partial class StockEntry : System.Web.UI.Page
         Product_Code = Convert.ToInt32(Session["Product_Code"]);
         if (IsPostBack == false)
         {
-            if (Product_Code != 1)
+            if (Product_Code != -1)
             {
                 DisplayStock();
             }
