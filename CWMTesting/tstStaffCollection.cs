@@ -95,6 +95,7 @@ namespace CWMTesting
             AllStaff.ThisStaff.Find(PrimaryKey);
             Assert.AreEqual(AllStaff.ThisStaff, TestItem);
 
+            AllStaff.Delete();
 
         }
 
@@ -152,6 +153,8 @@ namespace CWMTesting
             AllStaff.Update();
             AllStaff.ThisStaff.Find(PrimaryKey);
             Assert.AreEqual(AllStaff.ThisStaff, TestItem);
+
+            AllStaff.Delete();
         }
 
 

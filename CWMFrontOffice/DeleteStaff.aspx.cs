@@ -29,5 +29,3 @@ public partial class DeleteStaff : System.Web.UI.Page
     }
 }
 
-
-}
